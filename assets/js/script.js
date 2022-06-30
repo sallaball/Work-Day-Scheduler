@@ -19,8 +19,12 @@ $("#save").on("click", function() {
     console.log(times);
     console.log(editText);
 
-    // $(currentDayEl).append(times);
+    
 });
+
+
+//loop through times
+
 
 
 
@@ -31,8 +35,8 @@ $("#save").on("click", function() {
   var checkTime = function() {
     var hour = $(".hour").text().trim();
 
-    var time = moment(hour, "LT");
-    console.log(time);
+    var time = moment().hour();
+    console.log(time, hour);
 
     $(".hour").removeClass(".present .past .future");
 
