@@ -11,20 +11,24 @@ currentDayEl.textContent = moment().format("dddd, MMMM Do YYYY");
 
 //save textarea by clicking "save" button
 
-
-$("#save").on("click", function() {
-    var editText = $(this).siblings(".description").val();
+var saveText = function() {
+$(".saveBtn").on("click", function() {
+    var text = $(this).siblings(".description").val();
     var times = $(this).parent().attr("id");
-    localStorage.setItem("text", JSON.stringify(editText, times));
-    console.log(times);
-    console.log(editText);
+    localStorage.setItem(text, times);
+    // console.log(times);
+    // console.log(text);
+      
 
-    
-});
+})};
+
+saveText();
 
 
-//loop through times
 
+//get saved items from local storage
+
+var textBox = localStorage.getItem(".descritpion");
 
 
 
@@ -41,11 +45,11 @@ $("#save").on("click", function() {
     $(".hour").removeClass(".present .past .future");
 
     if (moment().isAfter(time)) {
-        $(".hour").addClass(".past");
+        $(this).addClass(".past");
     } else if (moment().isBefore(time)) {
-        $(".hour").addClass(".future");
+        $(this).addClass(".future");
     } else {
-        $(".hour").addClass(".present");
+        $(this).addClass(".present");
     }
   };
 
