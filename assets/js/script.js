@@ -1,6 +1,6 @@
 
-var text = {};
 var time = moment();
+
 // create date
 
 var currentDayEl = document.querySelector("#currentDay");
@@ -8,71 +8,59 @@ var currentDayEl = document.querySelector("#currentDay");
 currentDayEl.textContent = moment().format("dddd, MMMM Do YYYY");
 
 
-//array for times
-
-
-
-// // edit textarea
-// $(".container .time-block").on("click", "textarea", function() {
-//     var text = $(this).text().trim();
-
-
-// });
-
-//Loop through time slots
-
-
-
-// var saveText = function() {
-//     localStorage.setItem("text", JSON.stringify(text));
-//   };
 
 //save textarea by clicking "save" button
+
+
 $("#save").on("click", function() {
     var editText = $(this).siblings(".description").val();
     var times = $(this).parent().attr("id");
-    localStorage.setItem(times, editText);
+    localStorage.setItem("text", JSON.stringify(editText, times));
     console.log(times);
     console.log(editText);
 
+    // $(currentDayEl).append(times);
 });
 
-// $("#container .saveBtn").click(function() {
-//     // get form values
-//     var Text = $(".description").val();
 
-  
-//     if (taskText && taskDate) {
-//       createTask(taskText, taskDate, "toDo");
-  
-//       // close modal
-//       $("#task-form-modal").modal("hide");
-  
-//     //   // save in tasks array
-//     //   text.toDo.push({
-//     //     text: taskText,
-//     //   });
-  
-//       saveText();
-//     }
-//   });
+
+
+
+  //check what time it is
+
+  var checkTime = function() {
+    var hour = $(".hour").text().trim();
+
+    var time = moment(hour, "LT");
+    console.log(time);
+
+    $(".hour").removeClass(".present .past .future");
+
+    if (moment().isAfter(time)) {
+        $(".hour").addClass(".past");
+    } else if (moment().isBefore(time)) {
+        $(".hour").addClass(".future");
+    } else {
+        $(".hour").addClass(".present");
+    }
+  };
+
+  checkTime();
 
  
 
 
 // //if hour has passed, add grey background
-// var pastHour = function(textEl) {
-//     var hour = $(textEl).find(".hour").text().trim();
-//     var time = moment(hour, "L").set("hour", 17);
-//     $(textEl).removeClass("future");
-//     console.log("time");
+var pastHour = function(textEl) {
+    var hour = $(textEl).find(".hour").text().trim();
+    var time = moment(hour, "L").set("hour", 17);
+    $(textEl).removeClass("future");
+    console.log("time");
   
-//     // if (moment().isAfter(time)) {
-//     //   $(textEl).addClass("future");
-//     // } else if (Math.abs(moment()) <= ) {
-//     //   $(textEl).addClass("present");
-//     // }
-//   };
+    if (moment().isAfter(time)) {
+      $(textEl).addClass("future");
+    } 
+  };
 
 
 
