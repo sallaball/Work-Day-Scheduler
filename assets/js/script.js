@@ -16,8 +16,8 @@ $(document).ready(function() {
     var text = $(this).siblings(".description").val();
     var times = $(this).parent().attr("id");
     localStorage.setItem(text, times);
-// console.log(times);
-// console.log(text);
+console.log(times);
+console.log(text);
     });
 
     var loadText = function() {
