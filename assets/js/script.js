@@ -8,7 +8,7 @@ var currentDayEl = document.querySelector("#currentDay");
 
 currentDayEl.textContent = moment().format("dddd, MMMM Do YYYY");
 
-var timesArr = ["8:00", "9:00", "10:00", "11:00", "12:00"]
+var timesArr = ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
 
 //save textarea by clicking "save" button
 $(document).ready(function () {
